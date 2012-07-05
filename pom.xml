@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.compart.gui</groupId>
 	<artifactId>cli</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.01</version>
 
 	<dependencies>
 
@@ -38,7 +38,7 @@
 				<version>2.9</version>
 				<configuration>
 					<includes>
-						<include>**/All*</include>
+						<include>**/*Test*</include>
 					</includes>
 				</configuration>
 				<executions>
