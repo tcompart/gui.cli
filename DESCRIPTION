@@ -1,0 +1,7 @@
+Dieses Projekt beschaeftigt sich mit einer GUI fuer die COMMAND LINE
+
+Dazu existieren zwei wichtige Klassen: ParameterFactory und Parameter
+Beide ergeben dann ein ParameterResult das genutzt werden kann:
+	hasParameter(Parameter) : boolean
+	getValue(Parameter<?>) : Maybe<?>
+	getValue(Parameter, Class<T>) : Maybe<T>

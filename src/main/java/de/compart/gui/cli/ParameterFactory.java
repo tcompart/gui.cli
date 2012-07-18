@@ -3,13 +3,19 @@
  */
 package de.compart.gui.cli;
 
+import java.io.BufferedOutputStream;
+import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedList;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.util.comparator.ComparableComparator;
 
 import de.uni_leipzig.asv.clarin.common.tuple.Maybe;
 
@@ -60,7 +66,7 @@ public class ParameterFactory {
 					log.warn("Parameter '{}' seems to be no parameter, and will be treated as value for another recognized parameter", currentString);
 				}
 			}
-			log.info("Adding value '{}' to {}. Value will be added to last recognized parameter.", currentString, ParameterResult.class.getSimpleName());
+			log.info("Adding value '{}' to {}. Value will be added to last recognized parameter '{}'.", new Object[]{currentString, ParameterResult.class.getSimpleName(), result.getCurrentParameter()});
 			result.addValue(currentString);
 		}
 		
@@ -128,10 +134,37 @@ public class ParameterFactory {
 		return parameter;
 	}
 	
-	public static void printHelp(final OutputStream out, final OutputStream errorOut, final Collection<Parameter<?>> givenParameters, final Collection<Parameter<?>> definedParameters) {
+	public static void printHelp(final OutputStream out, final OutputStream err, final ParameterResult given, final Collection<Parameter<?>> definedParameters) throws IOException {
+		try {
+			writeLine(out, "\nFound parameters:");
+			for (Parameter<?> foundParameter : definedParameters) {
+				if (given.hasParameter(foundParameter)) {
+					writeLine(out, String.format("\t: %s", foundParameter));
+				}
+			}
+			writeLine(out, "\nPossible parameters:");
+			for (Parameter<?> foundParameter : definedParameters) {
+				writeLine(out, String.format("\t: %s", foundParameter));
+			}
+			writeLine(err, "\nMissing parameters:");
+			for (Parameter<?> foundParameter : definedParameters) {
+				if (foundParameter.isRequired() && !given.hasParameter(foundParameter)) {
+					writeLine(err, String.format("\t: %s", foundParameter));
+				}
+			}			
+		} finally {
+			out.flush();
+			out.close();
+			err.flush();
+			err.close();
+		}
 		
 	}
 	
+	private static void writeLine(final OutputStream out, final String lineToBeWritten) throws IOException {
+		out.write(String.format("%s%n", lineToBeWritten).getBytes());
+	}
+
 	public static class DefaultParameter<TYPE> implements Parameter<TYPE> {
 
 		private final String shortForm;
