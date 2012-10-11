@@ -1,13 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.compart.gui</groupId>
 	<artifactId>cli</artifactId>
 	<version>0.01</version>
 
 	<dependencies>
-
-
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -15,9 +13,14 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>de.uni_leipzig.asv</groupId>
-			<artifactId>clarin.common</artifactId>
+			<groupId>de.compart</groupId>
+			<artifactId>compart-common</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.6.1</version>
 		</dependency>
 	</dependencies>
 

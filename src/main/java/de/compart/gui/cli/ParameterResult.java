@@ -1,16 +1,15 @@
 /**
- * 
+ *
  */
 package de.compart.gui.cli;
 
-import de.uni_leipzig.asv.clarin.common.tuple.Maybe;
+import de.compart.common.Maybe;
 
 public interface ParameterResult {
 
-	<T> boolean hasParameter(final Parameter<T> parameter);
+	boolean hasParameter( final Parameter parameter );
 
-	<T> Maybe<T> getValue(final Parameter<T> parameter);
-	
-	<T> Maybe<T> getValue(final Parameter<?> parameter, Class<T> valueClass);
-	
+	<T> Maybe<T> getValue( final Parameter<T> parameter );
+
+	<T> Maybe<T> getValue( final Parameter<? super T> parameter, Class<T> valueClasses );
 }
