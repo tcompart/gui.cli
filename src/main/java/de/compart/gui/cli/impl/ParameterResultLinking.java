@@ -1,10 +1,14 @@
 /**
  *
  */
-package de.compart.gui.cli;
+package de.compart.gui.cli.impl;
 
 import de.compart.common.Maybe;
+import de.compart.gui.cli.Parameter;
+import de.compart.gui.cli.ParameterFactory;
 import de.compart.gui.cli.ParameterFactory.ParameterConfiguration;
+import de.compart.gui.cli.ParameterResult;
+import de.compart.gui.cli.util.ClassCastHelperFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

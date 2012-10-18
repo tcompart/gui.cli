@@ -4,6 +4,7 @@
 package de.compart.gui.cli;
 
 import de.compart.common.Maybe;
+import de.compart.gui.cli.impl.ParameterResultLinking;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

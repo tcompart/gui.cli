@@ -1,7 +1,9 @@
-package de.compart.gui.cli;
+package de.compart.gui.cli.util;
 
 import de.compart.common.Maybe;
 import de.compart.common.reflect.ReflectionUtil;
+import de.compart.gui.cli.Parameter;
+import de.compart.gui.cli.ParameterFactory;
 
 import java.io.File;
 import java.util.*;
